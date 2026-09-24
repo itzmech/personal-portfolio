@@ -2,16 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---- Design tokens (Stitch design: warm amber on deep charcoal) ---- */
 :root {
-  --background: #0a0e14;
-  --background-alt: #0d1117;
-  --foreground: #e6edf3;
-  --foreground-muted: #8b949e;
-  --accent: #00ff9d;
-  --accent-dim: #00ff9d33;
-  --accent-glow: #00ff9d66;
-  --border: #21262d;
-  --card: #0d1117;
+  --background: #0e0f0d;
+  --background-alt: #141513;
+  --card: #171815;
+  --card-raised: #1d1e1a;
+  --foreground: #f2f0eb;
+  --foreground-muted: #a3a39b;
+  --accent: #f5a623;
+  --accent-strong: #ffc14d;
+  --accent-soft: #f5a62322;
+  --border: #2a2b26;
+  --border-strong: #3a3b34;
+  --success: #8fbf6a;
+  --info: #7aa5c4;
+}
+
+.light {
+  --background: #f7f5f0;
+  --background-alt: #efece4;
+  --card: #ffffff;
+  --card-raised: #ffffff;
+  --foreground: #23241f;
+  --foreground-muted: #6b6b61;
+  --accent: #c77f0a;
+  --accent-strong: #a3660a;
+  --accent-soft: #c77f0a1a;
+  --border: #ddd8cc;
+  --border-strong: #c9c3b4;
+  --success: #5a8a3a;
+  --info: #4a7396;
 }
 
 html {
@@ -25,7 +46,7 @@ body {
 
 @layer base {
   ::selection {
-    background-color: var(--accent-dim);
+    background-color: var(--accent-soft);
     color: var(--foreground);
   }
 
@@ -40,55 +61,34 @@ body {
     text-wrap: balance;
   }
 
+  /* Subtle dot texture from the Stitch mockup */
   .dot-grid {
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(0, 255, 157, 0.06) 1px,
+      color-mix(in srgb, var(--accent) 7%, transparent) 1px,
       transparent 0
     );
-    background-size: 24px 24px;
+    background-size: 28px 28px;
   }
 
-  .scanline-overlay::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.03) 2px,
-      rgba(0, 0, 0, 0.03) 4px
-    );
-    z-index: 0;
-  }
-
-  .neon-border {
+  .card-surface {
+    background-color: var(--card);
     border: 1px solid var(--border);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    border-radius: 0.5rem;
   }
 
-  .neon-border:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 20px var(--accent-dim), inset 0 0 20px rgba(0, 255, 157, 0.03);
-  }
-
-  .neon-text-glow {
-    text-shadow: 0 0 20px var(--accent-glow);
-  }
-
-  .cursor-blink {
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
     }
-    50% {
-      opacity: 0;
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 }

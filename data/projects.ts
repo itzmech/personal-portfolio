@@ -1,73 +1,90 @@
 export type Project = {
   id: string;
   title: string;
+  /** Short card description. */
   description: string;
   tags: string[];
-  github: string;
-  live?: string;
-  security?: boolean;
-  placeholder?: boolean;
+  /** Real, deployed URL of the project. */
+  live: string;
+  /** Omit when the repo is private or not meant to be linked. */
+  github?: string;
+  status: "in-development" | "live";
+  /**
+   * Path under /public for the card preview image.
+   * Add the file when available; the card renders a neutral
+   * placeholder block when omitted so nothing 404s.
+   */
+  image?: string;
+  imageAlt?: string;
 };
 
+/**
+ * Real projects only. Never invent repository URLs — link the GitHub
+ * profile instead when no repo URL is confirmed.
+ */
 export const projects: Project[] = [
   {
-    id: "project-1",
-    title: "[Placeholder] Secure Auth System",
+    id: "the-atlas",
+    title: "The Atlas",
     description:
-      "JWT-based authentication with rate limiting and OWASP-aligned security headers. Replace with your project.",
-    tags: ["Next.js", "Node.js", "JWT", "PostgreSQL"],
-    github: "https://github.com/yourusername/project-1",
-    live: "https://example.com",
-    security: true,
-    placeholder: true,
+      "A travel web project focused on discovering destinations and planning trips.",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    live: "https://travel-web-green-five.vercel.app",
+    status: "in-development",
   },
   {
-    id: "project-2",
-    title: "[Placeholder] E-Commerce Platform",
+    id: "hirehub",
+    title: "HireHub",
     description:
-      "Full-stack online store with cart, checkout, and admin dashboard. Replace with your project.",
-    tags: ["React", "Express", "MongoDB", "Stripe"],
-    github: "https://github.com/yourusername/project-2",
-    live: "https://example.com",
-    placeholder: true,
+      "A job discovery platform project currently under development.",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    live: "https://hire-hub-tawny.vercel.app/",
+    status: "in-development",
+  },
+];
+
+export type LearningTopic = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+/** Hands-on security learning areas — exploration, not expertise. */
+export const learningTopics: LearningTopic[] = [
+  {
+    id: "web-security",
+    title: "Web Security",
+    description:
+      "Learning about OWASP Top 10, common vulnerabilities, and secure coding practices.",
   },
   {
-    id: "project-3",
-    title: "[Placeholder] CTF Writeup Collection",
+    id: "linux",
+    title: "Linux",
     description:
-      "Documented solutions for HackTheBox and TryHackMe machines. Replace with your writeups.",
-    tags: ["Python", "Bash", "Linux", "Networking"],
-    github: "https://github.com/yourusername/project-3",
-    security: true,
-    placeholder: true,
+      "Getting comfortable with the terminal, file systems, permissions, and administration.",
   },
   {
-    id: "project-4",
-    title: "[Placeholder] Vulnerability Scanner Script",
+    id: "networking",
+    title: "Networking",
     description:
-      "Automated recon and vulnerability scanning tool for lab environments. Replace with your tool.",
-    tags: ["Python", "Nmap", "Security"],
-    github: "https://github.com/yourusername/project-4",
-    security: true,
-    placeholder: true,
+      "Understanding how networks and protocols work, packet by packet.",
   },
   {
-    id: "project-5",
-    title: "[Placeholder] Task Manager API",
+    id: "ctfs",
+    title: "CTFs",
     description:
-      "RESTful API with authentication, validation, and comprehensive test coverage. Replace with your project.",
-    tags: ["Node.js", "Express", "Jest", "Docker"],
-    github: "https://github.com/yourusername/project-5",
-    placeholder: true,
+      "Solving capture-the-flag challenges on TryHackMe and Hack The Box.",
   },
   {
-    id: "project-6",
-    title: "[Placeholder] Portfolio Website",
+    id: "pentesting",
+    title: "Pentesting",
     description:
-      "This site — a dark terminal-themed portfolio built with Next.js and Framer Motion.",
-    tags: ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
-    github: "https://github.com/yourusername/portfolio",
-    live: "https://example.com",
-    placeholder: true,
+      "Learning penetration testing methodology and hands-on labs.",
+  },
+  {
+    id: "tryhackme",
+    title: "TryHackMe",
+    description:
+      "Practicing real-world scenarios and improving step by step.",
   },
 ];

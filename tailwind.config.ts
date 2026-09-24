@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,25 +12,21 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         "background-alt": "var(--background-alt)",
+        card: "var(--card)",
+        "card-raised": "var(--card-raised)",
         foreground: "var(--foreground)",
         "foreground-muted": "var(--foreground-muted)",
         accent: "var(--accent)",
-        "accent-dim": "var(--accent-dim)",
+        "accent-strong": "var(--accent-strong)",
+        "accent-soft": "var(--accent-soft)",
         border: "var(--border)",
-        card: "var(--card)",
+        "border-strong": "var(--border-strong)",
+        success: "var(--success)",
+        info: "var(--info)",
       },
       fontFamily: {
         mono: ["var(--font-jetbrains-mono)", "monospace"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-      },
-      animation: {
-        blink: "blink 1s step-end infinite",
-      },
-      keyframes: {
-        blink: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
-        },
       },
     },
   },

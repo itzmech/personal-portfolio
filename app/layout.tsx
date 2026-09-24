@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
+import MotionProvider from "@/components/ui/MotionProvider";
+import { THEME_COOKIE } from "@/lib/theme";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,10 +17,17 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0a0e14",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.summary,
-  metadataBase: new URL("https://yourportfolio.vercel.app"), // Replace with your domain
+  // No production deployment URL is known yet — do not invent one.
+  // When deploying, set metadataBase to the real URL.
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.summary,
@@ -27,7 +36,9 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
   },
   twitter: {
-    card: "summary_large_image",
+    // Ansh has no X/Twitter account — these tags only control how a
+    // link preview looks when *others* share the portfolio URL.
+    card: "summary",
     title: siteConfig.title,
     description: siteConfig.summary,
   },
@@ -37,17 +48,29 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { cookies } = await import("next/headers");
+  const theme = cookies().get(THEME_COOKIE)?.value === "light" ? "light" : "dark";
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className={`scroll-smooth ${theme === "light" ? "light" : ""}`}
+      style={{ colorScheme: theme }}
+    >
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground`}
       >
-        {children}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border focus:border-accent focus:bg-background focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-accent"
+        >
+          Skip to main content
+        </a>
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

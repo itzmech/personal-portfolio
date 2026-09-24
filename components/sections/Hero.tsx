@@ -1,65 +1,66 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown, Download } from "lucide-react";
-import TerminalTyping from "@/components/sections/TerminalTyping";
+import { ArrowRight, Mail } from "lucide-react";
+import HeroStatusCard from "@/components/sections/HeroStatusCard";
 import SocialLinks from "@/components/ui/SocialLinks";
+import Reveal from "@/components/ui/Reveal";
 import { siteConfig } from "@/data/site";
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen scroll-mt-0 dot-grid scanline-overlay pt-24 pb-16 md:pt-28"
+      className="relative dot-grid scroll-mt-20 overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36"
     >
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <TerminalTyping />
-        </motion.div>
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
+        <Reveal>
+          <p className="mb-3 font-mono text-sm uppercase tracking-wider text-accent">
+            {siteConfig.hero.greeting}
+          </p>
+          <h1 className="text-balance text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl md:text-6xl">
+            {siteConfig.hero.headlinePrefix}{" "}
+            <span className="text-accent">{siteConfig.hero.headlineName}</span>
+          </h1>
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-foreground">
+            Computer science student{" "}
+            <span className="text-accent">building things</span>, exploring the
+            web, and <span className="text-accent">learning cybersecurity</span>.
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-col gap-6"
-        >
-          <div>
-            <p className="mb-2 font-mono text-sm text-accent">
-              {"// initialize portfolio.exe"}
-            </p>
-            <h1 className="font-mono text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl">
-              Hi, I&apos;m{" "}
-              <span className="text-accent neon-text-glow">{siteConfig.name}</span>
-            </h1>
-            <p className="mt-4 max-w-lg text-lg text-foreground-muted">
-              {siteConfig.tagline}
-            </p>
+          <div className="mt-4 max-w-lg space-y-2 text-sm leading-relaxed text-foreground-muted">
+            {siteConfig.hero.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-md border border-accent bg-accent/10 px-6 py-3 font-mono text-sm text-accent transition-all hover:scale-105 hover:bg-accent/20 hover:shadow-[0_0_25px_var(--accent-dim)]"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-medium text-background transition-opacity hover:opacity-90"
             >
-              <ArrowDown size={16} aria-hidden="true" />
               View Projects
+              <ArrowRight size={16} aria-hidden="true" />
             </a>
             <a
-              href={siteConfig.resumeUrl}
-              download
-              className="group inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 font-mono text-sm text-foreground transition-all hover:scale-105 hover:border-accent hover:text-accent hover:shadow-[0_0_25px_var(--accent-dim)]"
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-3 font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
             >
-              <Download size={16} aria-hidden="true" />
-              Download Resume
+              <Mail size={16} aria-hidden="true" />
+              Contact Me
             </a>
           </div>
 
-          <SocialLinks />
-        </motion.div>
+          <div className="mt-10">
+            <p className="mb-3 font-mono text-xs uppercase tracking-wider text-foreground-muted">
+              Find me on
+            </p>
+            <SocialLinks />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <HeroStatusCard />
+        </Reveal>
       </div>
     </section>
   );

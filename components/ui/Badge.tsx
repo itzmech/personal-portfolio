@@ -1,26 +1,31 @@
 import { cn } from "@/lib/utils";
+import type { SkillLevel } from "@/data/skills";
 
 type BadgeProps = {
   children: React.ReactNode;
-  variant?: "default" | "security" | "placeholder";
+  variant?: SkillLevel | "default" | "muted";
   className?: string;
 };
 
-export default function Badge({
-  children,
-  variant = "default",
-  className,
-}: BadgeProps) {
+/**
+ * Small label chip. Skill-level variants mirror the Stitch design:
+ * "using" (solid accent tint), "learning" (amber outline),
+ * "exploring" (muted outline).
+ */
+const VARIANT_CLASSES: Record<BadgeProps["variant"] & string, string> = {
+  using: "border border-accent/50 bg-accent-soft text-accent",
+  learning: "border border-accent/35 bg-transparent text-accent/90",
+  exploring: "border border-border-strong bg-transparent text-foreground-muted",
+  default: "border border-border bg-card text-foreground-muted",
+  muted: "border border-border bg-transparent text-foreground-muted",
+};
+
+export default function Badge({ children, variant = "default", className }: BadgeProps) {
   return (
     <span
       className={cn(
         "inline-flex items-center rounded-md px-2.5 py-1 text-xs font-mono",
-        variant === "default" &&
-          "border border-border bg-background-alt text-foreground-muted",
-        variant === "security" &&
-          "border border-accent/40 bg-accent/10 text-accent",
-        variant === "placeholder" &&
-          "border border-amber-500/40 bg-amber-500/10 text-amber-400",
+        VARIANT_CLASSES[variant],
         className
       )}
     >
