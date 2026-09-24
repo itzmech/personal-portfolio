@@ -19,7 +19,7 @@ export default function HeroStatusCard() {
     <div className="card-surface overflow-hidden font-mono text-sm shadow-2xl">
       <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
         <p>
-          <span className="text-accent">~</span>/ansh
+          <span className="text-accent">~</span>/Ansh
         </p>
         <span
           className="inline-block h-2 w-2 rounded-full bg-success"
@@ -34,7 +34,7 @@ export default function HeroStatusCard() {
             <span className="text-accent">whoami</span>
           </p>
           <p className="text-foreground">
-            ansh — cs student &amp; developer
+            Ansh — CS Student &amp; Developer
           </p>
         </div>
 

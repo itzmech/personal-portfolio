@@ -3,7 +3,6 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
 import MotionProvider from "@/components/ui/MotionProvider";
-import { THEME_COOKIE } from "@/lib/theme";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0e14",
+  themeColor: "#0e0f0d",
   width: "device-width",
   initialScale: 1,
 };
@@ -48,19 +47,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { cookies } = await import("next/headers");
-  const theme = cookies().get(THEME_COOKIE)?.value === "light" ? "light" : "dark";
   return (
-    <html
-      lang="en"
-      className={`scroll-smooth ${theme === "light" ? "light" : ""}`}
-      style={{ colorScheme: theme }}
-    >
+    <html lang="en" className="scroll-smooth" style={{ colorScheme: "dark" }}>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground`}
       >

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "@/components/ui/ThemeToggle";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -52,43 +51,36 @@ export default function Navbar() {
           href="#hero"
           className="flex items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-accent"
         >
-          <span className="text-accent">~</span>/ansh
+          <span className="text-accent">~</span>/Ansh
         </Link>
 
-        <ul className="hidden items-center gap-6 md:flex">
-          {siteConfig.nav.map((item, i) => {
-            const num = String(i).padStart(2, "0");
-            return (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="rounded-sm font-mono text-sm text-foreground-muted transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
-                >
-                  <span className="mr-1.5 text-accent/70">{num}.</span>
-                  {item.label}
-                </a>
-              </li>
-            );
-          })}
+        <ul className="hidden items-center gap-8 md:flex">
+          {siteConfig.nav.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="rounded-sm font-mono text-sm text-foreground-muted transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <button
-            type="button"
-            className="rounded-md border border-border p-2 text-foreground-muted transition-colors hover:border-accent hover:text-accent md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? (
-              <X size={20} aria-hidden="true" />
-            ) : (
-              <Menu size={20} aria-hidden="true" />
-            )}
-          </button>
-        </div>
+        <button
+          type="button"
+          className="rounded-md border border-border p-2 text-foreground-muted transition-colors hover:border-accent hover:text-accent md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? (
+            <X size={20} aria-hidden="true" />
+          ) : (
+            <Menu size={20} aria-hidden="true" />
+          )}
+        </button>
       </nav>
 
       <div
@@ -99,21 +91,17 @@ export default function Navbar() {
         )}
       >
         <ul className="flex flex-col gap-1 px-4 py-4">
-          {siteConfig.nav.map((item, i) => {
-            const num = String(i).padStart(2, "0");
-            return (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="block rounded-md px-3 py-3 font-mono text-sm text-foreground-muted transition-colors hover:bg-card hover:text-accent"
-                >
-                  <span className="mr-1.5 text-accent/70">{num}.</span>
-                  {item.label}
-                </a>
-              </li>
-            );
-          })}
+          {siteConfig.nav.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                onClick={closeMenu}
+                className="block rounded-md px-3 py-3 font-mono text-sm text-foreground-muted transition-colors hover:bg-card hover:text-accent"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </header>

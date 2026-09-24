@@ -10,8 +10,11 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative dot-grid scroll-mt-20 overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36"
+      className="relative scroll-mt-20 overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36"
     >
+      {/* Night-city skyline: heavily darkened, fading into the page bg */}
+      <div className="night-city-bg" aria-hidden="true" />
+      <div className="night-city-scrim" aria-hidden="true" />
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
         <Reveal>
           <p className="mb-3 font-mono text-sm uppercase tracking-wider text-accent">
