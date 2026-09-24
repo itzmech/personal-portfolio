@@ -22,6 +22,7 @@
 
 # codebuff/freebuff local state
 .freebuff/
+dev-server.log
 
 # debug
 npm-debug.log*
