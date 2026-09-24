@@ -79,7 +79,7 @@ export default function Contact() {
 
   return (
     <SectionWrapper id="contact">
-      <SectionHeader number="05" label="Contact" title="Let's build something, or talk security." />
+      <SectionHeader number="07" label="Contact" title="Let's build something, or talk security." />
 
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal className="space-y-6">
