@@ -16,7 +16,7 @@ const STATUS_ICONS: Record<string, typeof Hammer> = {
  */
 export default function HeroStatusCard() {
   return (
-    <div className="card-surface overflow-hidden font-mono text-sm shadow-2xl">
+    <div className="terminal-card overflow-hidden font-mono text-sm shadow-2xl">
       <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
         <p>
           <span className="text-accent">~</span>/Ansh

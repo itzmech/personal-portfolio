@@ -20,11 +20,16 @@ export default function Hero() {
           <p className="mb-3 font-mono text-sm uppercase tracking-wider text-accent">
             {siteConfig.hero.greeting}
           </p>
-          <h1 className="text-balance text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl md:text-6xl">
+          <h1 className="text-balance text-4xl font-bold leading-[1.1] text-[#f5f3ee] sm:text-5xl md:text-6xl">
             {siteConfig.hero.headlinePrefix}{" "}
-            <span className="text-accent">{siteConfig.hero.headlineName}</span>
+            <span
+              className="text-accent"
+              style={{ textShadow: "0 0 28px rgba(245, 166, 35, 0.35)" }}
+            >
+              {siteConfig.hero.headlineName}
+            </span>
           </h1>
-          <p className="mt-5 max-w-lg text-lg leading-relaxed text-foreground">
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-[#e8eaee]">
             Computer science student{" "}
             <span className="text-accent">building things</span>, exploring the
             web, and <span className="text-accent">learning cybersecurity</span>.
@@ -46,7 +51,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-3 font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-md border border-[#3a4656] bg-[#232c3a]/60 px-5 py-3 font-medium text-[#dbe4f0] backdrop-blur-sm transition-colors hover:border-[#5a6b84] hover:text-white"
             >
               <Mail size={16} aria-hidden="true" />
               Contact Me
