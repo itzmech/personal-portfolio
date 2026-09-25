@@ -44,41 +44,66 @@ body {
   background-color: var(--background);
 }
 
-/* ---- Night-city atmosphere -------------------------------
-   The skyline image sits behind the hero, heavily darkened and
-   faded into the page background so text stays readable. */
-.night-city-bg {
+/* ---- Night-city atmosphere (page-level) -------------------
+   One layered backdrop behind the whole page: the skyline image
+   (kept), warm light-haze glows, and a scrim that starts light over
+   the hero and fades to the page background down the page. */
+.page-city-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: min(175vh, 1500px);
   z-index: 0;
+  pointer-events: none;
   background-image: url("/images/night-city.png");
   background-size: cover;
-  background-position: center 65%;
+  background-position: center 72%;
   background-repeat: no-repeat;
-  opacity: 0.75;
+  opacity: 0.9;
+  filter: brightness(1.35) contrast(1.03) saturate(1.08);
 }
 
-/* Dark scrim + fade into the page background.
-   Overlay tones are sampled from the skyline image itself:
-   cool blue-grey haze (#1a212c / #2f3947) rather than pure black,
-   so the hero reads as one continuous night atmosphere. */
-.night-city-scrim {
+/* Warm haze hugging the rooftop line — restrained, not neon. */
+.city-glow {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: min(120vh, 1000px);
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 22% 12% at 18% 58%, rgba(245, 166, 35, 0.1), transparent 70%),
+    radial-gradient(ellipse 26% 12% at 55% 60%, rgba(245, 166, 35, 0.08), transparent 70%),
+    radial-gradient(ellipse 20% 10% at 82% 56%, rgba(245, 166, 35, 0.09), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 40%, rgba(90, 110, 140, 0.1), transparent 70%);
+}
+
+/* Foreground scrim: near-transparent over the hero (city shows),
+   smoothly fading the city into the page background below it. */
+.page-city-scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: min(175vh, 1500px);
+  z-index: 0;
+  pointer-events: none;
   background:
     linear-gradient(
       to bottom,
-      rgba(26, 33, 44, 0.25) 0%,
-      rgba(30, 38, 50, 0.40) 55%,
-      color-mix(in srgb, var(--background) 88%, transparent) 100%
+      rgba(26, 33, 44, 0.18) 0%,
+      rgba(28, 35, 46, 0.28) 32%,
+      rgba(20, 25, 33, 0.55) 55%,
+      color-mix(in srgb, var(--background) 82%, transparent) 78%,
+      var(--background) 96%
     ),
     linear-gradient(
       to right,
-      rgba(24, 30, 40, 0.35) 0%,
+      rgba(24, 30, 40, 0.3) 0%,
       transparent 55%
     );
-  pointer-events: none;
 }
 
 /* Cool-tinted surface for the hero status card, echoing the
@@ -129,6 +154,13 @@ body {
       rgba(245, 166, 35, 0.05),
       transparent 70%
     );
+}
+
+/* Light-mode fallback for city layers (site is dark-only). */
+.city-glow,
+.page-city-scrim,
+.page-city-bg {
+  will-change: opacity;
 }
 
 /* ---- Star field ------------------------------------------

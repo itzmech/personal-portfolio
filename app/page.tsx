@@ -10,9 +10,16 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
+      {/* Page-level night-city backdrop: skyline, light haze, scrim.
+          Layers sit behind all sections and fade down the page. */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="page-city-bg" />
+        <div className="city-glow" />
+        <div className="page-city-scrim" />
+      </div>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" className="relative">
         <Hero />
         <About />
         <Skills />
@@ -22,6 +29,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

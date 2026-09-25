@@ -13,9 +13,7 @@ export default function Hero() {
       id="hero"
       className="relative scroll-mt-20 overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36"
     >
-      {/* Night-city skyline: heavily darkened, fading into the page bg */}
-      <div className="night-city-bg" aria-hidden="true" />
-      <div className="night-city-scrim" aria-hidden="true" />
+      {/* Skyline/scrim now live at page level; hero adds local glows. */}
       <div className="hero-atmosphere" aria-hidden="true" />
       <StarField />
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 pt-8 sm:px-6 md:pt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
