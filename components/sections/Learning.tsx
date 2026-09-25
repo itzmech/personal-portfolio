@@ -69,7 +69,7 @@ export default function Learning() {
             Always learning. Always building.
           </p>
           <p className="font-mono text-xs uppercase tracking-wider text-foreground-muted">
-            GoProgressOverPerfection
+            Go Progress Over Perfection
           </p>
         </div>
       </Reveal>
