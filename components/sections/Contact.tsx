@@ -17,7 +17,7 @@ import { validateContact } from "@/lib/contact";
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const inputClasses =
-  "w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-foreground-muted/60 focus:border-accent focus:outline-none";
+  "w-full rounded-md border border-[#3a4656] bg-[#10141b]/70 px-4 py-3 text-sm text-foreground backdrop-blur-sm transition-colors placeholder:text-foreground-muted/60 focus:border-accent focus:outline-none";
 
 const SOCIAL_ICONS = {
   github: GitHubIcon,
@@ -123,7 +123,7 @@ export default function Contact() {
           {status === "success" ? (
             <div
               role="status"
-              className="card-surface p-8 text-center"
+              className="glass-card p-8 text-center"
             >
               <p className="font-mono text-sm text-accent">
                 &gt; message sent successfully
@@ -143,7 +143,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="card-surface space-y-5 p-6"
+              className="glass-card space-y-5 p-6"
               aria-describedby="contact-form-status"
             >
               <div className="grid gap-5 sm:grid-cols-2">

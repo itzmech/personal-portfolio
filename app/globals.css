@@ -94,6 +94,84 @@ body {
   backdrop-filter: blur(6px);
 }
 
+/* Translucent glass surface for the contact form. */
+.glass-card {
+  background: linear-gradient(
+    165deg,
+    rgba(32, 40, 52, 0.38),
+    rgba(16, 20, 27, 0.55)
+  );
+  border: 1px solid rgba(70, 82, 100, 0.45);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(8px);
+}
+
+/* ---- Star field ------------------------------------------
+   Twinkling stars + occasional shooting stars. Purely decorative;
+   reduced-motion kills the animations globally. */
+.star-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #eef2f8;
+  opacity: 0.25;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 110px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(238, 242, 248, 0) 0%,
+    rgba(238, 242, 248, 0.9) 100%
+  );
+  transform: rotate(-35deg);
+  opacity: 0;
+  animation: shoot linear infinite;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(0);
+  }
+  4% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(240px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(240px);
+  }
+}
+
 @layer base {
   ::selection {
     background-color: var(--accent-soft);
