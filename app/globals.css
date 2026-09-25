@@ -106,6 +106,31 @@ body {
   backdrop-filter: blur(8px);
 }
 
+/* Full-bleed atmospheric treatment for the whole hero: subtle nebula
+   glows layered over the skyline so no area reads as flat. */
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 90% 55% at 78% 22%,
+      rgba(58, 70, 92, 0.32),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 70% 45% at 15% 12%,
+      rgba(40, 52, 68, 0.38),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 50% 55%,
+      rgba(245, 166, 35, 0.05),
+      transparent 70%
+    );
+}
+
 /* ---- Star field ------------------------------------------
    Twinkling stars + occasional shooting stars. Purely decorative;
    reduced-motion kills the animations globally. */
@@ -144,12 +169,14 @@ body {
   position: absolute;
   width: 110px;
   height: 1px;
+  /* Trail points up-left, bright head at the down-right leading
+     edge → the star visibly falls downward. */
   background: linear-gradient(
     to right,
     rgba(238, 242, 248, 0) 0%,
     rgba(238, 242, 248, 0.9) 100%
   );
-  transform: rotate(-35deg);
+  transform: rotate(35deg);
   opacity: 0;
   animation: shoot linear infinite;
 }
@@ -157,18 +184,18 @@ body {
 @keyframes shoot {
   0% {
     opacity: 0;
-    transform: rotate(-35deg) translateX(0);
+    transform: rotate(35deg) translateX(0);
   }
   4% {
     opacity: 1;
   }
   12% {
     opacity: 0;
-    transform: rotate(-35deg) translateX(240px);
+    transform: rotate(35deg) translateX(260px);
   }
   100% {
     opacity: 0;
-    transform: rotate(-35deg) translateX(240px);
+    transform: rotate(35deg) translateX(260px);
   }
 }
 

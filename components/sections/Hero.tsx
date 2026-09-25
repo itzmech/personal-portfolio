@@ -2,6 +2,7 @@
 
 import { ArrowRight, Mail } from "lucide-react";
 import StarField from "@/components/ui/StarField";
+import HeroStatusCard from "@/components/sections/HeroStatusCard";
 import SocialLinks from "@/components/ui/SocialLinks";
 import Reveal from "@/components/ui/Reveal";
 import { siteConfig } from "@/data/site";
@@ -15,9 +16,10 @@ export default function Hero() {
       {/* Night-city skyline: heavily darkened, fading into the page bg */}
       <div className="night-city-bg" aria-hidden="true" />
       <div className="night-city-scrim" aria-hidden="true" />
+      <div className="hero-atmosphere" aria-hidden="true" />
       <StarField />
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pb-4 pt-8 sm:px-6 md:pt-14 lg:px-8">
-        <Reveal className="max-w-2xl">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 pt-8 sm:px-6 md:pt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
+        <Reveal>
           <p className="mb-3 font-mono text-sm uppercase tracking-wider text-accent">
             {siteConfig.hero.greeting}
           </p>
@@ -59,14 +61,16 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-end justify-between gap-8">
-            <div>
-              <p className="mb-3 font-mono text-xs uppercase tracking-wider text-foreground-muted">
-                Find me on
-              </p>
-              <SocialLinks />
-            </div>
+          <div className="mt-10">
+            <p className="mb-3 font-mono text-xs uppercase tracking-wider text-foreground-muted">
+              Find me on
+            </p>
+            <SocialLinks />
           </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <HeroStatusCard />
         </Reveal>
       </div>
     </section>
