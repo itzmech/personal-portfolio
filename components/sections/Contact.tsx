@@ -26,7 +26,7 @@ const SOCIAL_ICONS = {
 export default function Contact() {
   return (
     <SectionWrapper id="contact">
-      <SectionHeader number="07" label="Contact" title="Let's build something, or talk security." />
+      <SectionHeader label="Contact" title="Let's build something, or talk security." />
 
       <Reveal className="max-w-xl space-y-8">
         <p className="leading-relaxed text-foreground-muted">

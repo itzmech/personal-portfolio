@@ -31,7 +31,7 @@ export default function Interests() {
   return (
     <SectionWrapper id="beyond">
       <SectionHeader
-        number="06"
+
         label="Beyond the Code"
         title="Things I'm into"
         subtitle={interestsIntro}

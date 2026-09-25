@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/data/site";
 import MotionProvider from "@/components/ui/MotionProvider";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,23 +23,36 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: siteConfig.title,
-  description: siteConfig.summary,
-  // No production deployment URL is known yet — do not invent one.
-  // When deploying, set metadataBase to the real URL.
+  metadataBase: new URL(SITE_URL),
+  title: "Ansh — CS Student & Developer",
+  description:
+    "Computer science student at VIT-AP building web applications and learning cybersecurity, web security, Linux, and penetration testing.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: siteConfig.title,
-    description: siteConfig.summary,
+    title: "Ansh — CS Student & Developer",
+    description:
+      "Computer science student at VIT-AP building web applications and learning cybersecurity, web security, Linux, and penetration testing.",
+    url: SITE_URL,
     type: "website",
     locale: "en_US",
-    siteName: siteConfig.name,
+    siteName: "Ansh's Portfolio",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ansh — CS Student & Developer",
+      },
+    ],
   },
   twitter: {
-    // Ansh has no X/Twitter account — these tags only control how a
-    // link preview looks when *others* share the portfolio URL.
-    card: "summary",
-    title: siteConfig.title,
-    description: siteConfig.summary,
+    card: "summary_large_image",
+    title: "Ansh — CS Student & Developer",
+    description:
+      "Computer science student at VIT-AP building web applications and learning cybersecurity, web security, Linux, and penetration testing.",
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,

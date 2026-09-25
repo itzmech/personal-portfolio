@@ -37,7 +37,7 @@ export default function Projects() {
   return (
     <SectionWrapper id="projects">
       <SectionHeader
-        number="03"
+
         label="Projects"
         title="Things I've built recently"
         action={

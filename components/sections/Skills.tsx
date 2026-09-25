@@ -24,7 +24,7 @@ export default function Skills() {
   return (
     <SectionWrapper id="skills" banded>
       <SectionHeader
-        number="02"
+
         label="Skills"
         title="Things I work with"
         subtitle="Honest levels — what I use in projects, what I'm learning, and what I'm exploring through labs. No percentages, no inflated claims."

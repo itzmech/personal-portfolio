@@ -9,7 +9,7 @@ import { siteConfig } from "@/data/site";
 export default function About() {
   return (
     <SectionWrapper id="about">
-      <SectionHeader number="01" label="About me" title={siteConfig.about.title} />
+      <SectionHeader label="About me" title={siteConfig.about.title} />
 
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal className="space-y-4 leading-relaxed text-foreground-muted">

@@ -31,7 +31,7 @@ export default function Learning() {
   return (
     <SectionWrapper id="learning" banded>
       <SectionHeader
-        number="04"
+
         label="Learning & Exploration"
         title="Hands-on practice & security path"
         subtitle="I don't have certifications yet, but I'm putting in the time, solving challenges, and building real skills every day."
@@ -69,7 +69,7 @@ export default function Learning() {
             Always learning. Always building.
           </p>
           <p className="font-mono text-xs uppercase tracking-wider text-foreground-muted">
-            Go Progress Over Perfection
+            Go · Progress Over Perfection
           </p>
         </div>
       </Reveal>

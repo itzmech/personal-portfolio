@@ -19,22 +19,6 @@
   --info: #7aa5c4;
 }
 
-.light {
-  --background: #f7f5f0;
-  --background-alt: #efece4;
-  --card: #ffffff;
-  --card-raised: #ffffff;
-  --foreground: #23241f;
-  --foreground-muted: #6b6b61;
-  --accent: #c77f0a;
-  --accent-strong: #a3660a;
-  --accent-soft: #c77f0a1a;
-  --border: #ddd8cc;
-  --border-strong: #c9c3b4;
-  --success: #5a8a3a;
-  --info: #4a7396;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -60,8 +44,8 @@ body {
   background-size: cover;
   background-position: center 72%;
   background-repeat: no-repeat;
-  opacity: 0.9;
-  filter: brightness(1.35) contrast(1.03) saturate(1.08);
+  opacity: 0.72;
+  filter: brightness(1.12) contrast(1.03) saturate(1.05);
 }
 
 /* Warm haze hugging the rooftop line — restrained, not neon. */
@@ -74,10 +58,10 @@ body {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 22% 12% at 18% 58%, rgba(245, 166, 35, 0.1), transparent 70%),
-    radial-gradient(ellipse 26% 12% at 55% 60%, rgba(245, 166, 35, 0.08), transparent 70%),
-    radial-gradient(ellipse 20% 10% at 82% 56%, rgba(245, 166, 35, 0.09), transparent 70%),
-    radial-gradient(ellipse 40% 30% at 50% 40%, rgba(90, 110, 140, 0.1), transparent 70%);
+    radial-gradient(ellipse 22% 12% at 18% 58%, rgba(245, 166, 35, 0.07), transparent 70%),
+    radial-gradient(ellipse 26% 12% at 55% 60%, rgba(245, 166, 35, 0.055), transparent 70%),
+    radial-gradient(ellipse 20% 10% at 82% 56%, rgba(245, 166, 35, 0.06), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 40%, rgba(90, 110, 140, 0.08), transparent 70%);
 }
 
 /* Foreground scrim: near-transparent over the hero (city shows),
@@ -93,10 +77,10 @@ body {
   background:
     linear-gradient(
       to bottom,
-      rgba(26, 33, 44, 0.18) 0%,
-      rgba(28, 35, 46, 0.28) 32%,
-      rgba(20, 25, 33, 0.55) 55%,
-      color-mix(in srgb, var(--background) 82%, transparent) 78%,
+      rgba(26, 33, 44, 0.24) 0%,
+      rgba(28, 35, 46, 0.36) 32%,
+      rgba(20, 25, 33, 0.62) 55%,
+      color-mix(in srgb, var(--background) 86%, transparent) 78%,
       var(--background) 96%
     ),
     linear-gradient(

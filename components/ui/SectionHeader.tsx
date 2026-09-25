@@ -1,14 +1,12 @@
 type SectionHeaderProps = {
-  number: string;
   label: string;
   title: string;
   subtitle?: string;
   action?: React.ReactNode;
 };
 
-/** Numbered Stitch-style section header: "01 / ABOUT ME" + heading. */
+/** Section header: eyebrow label + heading. */
 export default function SectionHeader({
-  number,
   label,
   title,
   subtitle,
@@ -17,7 +15,7 @@ export default function SectionHeader({
   return (
     <div className="mb-10 md:mb-12">
       <p className="font-mono text-xs uppercase tracking-wider text-accent">
-        {number} / {label}
+        {label}
       </p>
       <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
         <h2 className="text-2xl font-bold text-foreground md:text-3xl">
