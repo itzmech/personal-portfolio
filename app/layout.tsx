@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import MotionProvider from "@/components/ui/MotionProvider";
 import { SITE_URL } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <MotionProvider>{children}</MotionProvider>
+        <Analytics />
       </body>
     </html>
   );
